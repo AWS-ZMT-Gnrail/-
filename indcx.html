@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق كاشير</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- صفحة تسجيل الدخول -->
+    <div class="login-container" id="login-container">
+        <h2>تسجيل الدخول</h2>
+        <div class="input-group">
+            <label for="username">اسم المستخدم</label>
+            <input type="text" id="username" placeholder="أدخل اسم المستخدم">
+        </div>
+
+        <div class="input-group">
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" placeholder="أدخل كلمة المرور">
+        </div>
+
+        <button class="btn" onclick="login()">تسجيل الدخول</button>
+    </div>
+
+    <!-- واجهة إضافة المبيعات -->
+    <div class="container" id="cashier-container" style="display: none;">
+        <h2>إضافة مبيعات اليوم</h2>
+        <div class="input-group">
+            <label for="product">اسم المنتج</label>
+            <input type="text" id="product" placeholder="أدخل اسم المنتج">
+        </div>
+
+        <div class="input-group">
+            <label for="price">السعر</label>
+            <input type="number" id="price" placeholder="أدخل السعر" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="quantity">العدد</label>
+            <input type="number" id="quantity" placeholder="أدخل عدد المنتجات" min="1">
+        </div>
+
+        <button class="btn" onclick="addSale()">إضافة بيع</button>
+    </div>
+
+    <!-- عرض المبيعات -->
+    <div class="container" id="sales-container" style="display: none;">
+        <h2>سجل المبيعات</h2>
+        <div class="sales-list">
+            <table id="sales-table">
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>اسم المنتج</th>
+                        <th>السعر</th>
+                        <th>العدد</th>
+                        <th>الإجمالي</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- سيتم إضافة السجل هنا -->
+                </tbody>
+            </table>
+        </div>
+        <div class="total">
+            <p>إجمالي المبيعات: <span id="total-sales">0.00</span> جنيه</p>
+        </div>
+        <!-- إضافة زر لإنشاء جدول جديد -->
+<button class="btn" onclick="createNewTable()">إنشاء جدول جديد</button>
+
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<button class="btn excel-btn" onclick="exportToExcel()">تحميل Excel</button>
+<button class="btn delete-btn" onclick="deleteTable()">مسح الجدول</button>
+
+        <button class="btn view-monthly-btn" onclick="viewMonthlySales()">عرض مبيعات الشهر</button>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
